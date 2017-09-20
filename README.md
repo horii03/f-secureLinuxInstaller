@@ -1,7 +1,6 @@
 # F-secure Linux Security
-====
 
-# Operating systems
+## Operating systems
 
 ### The following 32-bit Linux distributions are supported:
 
