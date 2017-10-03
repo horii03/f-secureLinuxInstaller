@@ -7,7 +7,7 @@
 #       \/   |___/\___|\___|\__,_|_|  \___|
 #
 #    Script to install F-secure into linux machines
-#  :: Coded by n3k00n3 | userX this code uses GPL3 ::
+#  :: Coded by n3k00n3 | userX this code is under GPL3 ::
 #              3mm4[at]riseup[dot]net
 #	          user_x[at]riseup[dot]net
 #
@@ -15,10 +15,14 @@
 
 # We need to be root!
 if [ "$(id -u)" != "0" ]; then
-   echo "This script must be run as root" 1>&2
-   exit 1
+	echo "This script must be run as root" 1>&2
+	echo "Do you want to become root in order to proceed? (y/N)"
+	read ans
+	if [ -z $ans ] || [ $ans == "n" ]; then
+		exit 1
+	fi
+	sudo su
 fi
-
 
 TARGET=$(echo "https://download.f-secure.com/corpro/ls/current/fsls-11.10.68-rtm.tar.gz" | awk -F "/\n" '{print $1}' | awk -F "/" '{print $7}')
 
